@@ -39,11 +39,14 @@
         </Grid.ColumnDefinitions>
         
         <Grid Grid.Column="1"
-              Grid.Row="1">
+              Grid.Row="1"
+              Height="30">
             
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="60"/>
                 <ColumnDefinition Width="16"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="4"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             
@@ -51,8 +54,13 @@
                     Content="Start"
                     Command="{Binding Start}"/>
             
-            <TextBox Grid.Column="2"
+            <TextBlock Grid.Column="2"
+                       Text="Folder:"
+                       VerticalAlignment="Center"></TextBlock>
+            
+            <TextBox Grid.Column="4"
                      HorizontalAlignment="Stretch"
+                     VerticalAlignment="Center"
                      Text="{Binding Folder, 
                                     Mode=TwoWay, 
                                     UpdateSourceTrigger=PropertyChanged}"/>
