@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"                        
-             xmlns:sampleData="clr-namespace:FileOperator.ViewModel"             
+             xmlns:sampleData="clr-namespace:FileOperator.ViewModel"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:behaviors="clr-namespace:bytePassion.Lib.WpfLib.Behaviors;assembly=bytePassion.Lib"
              mc:Ignorable="d"
              d:DesignWidth="900"          
         Title="CodeLineCounter" Height="459.8" Width="745">
@@ -96,6 +98,10 @@
                   Grid.Row="5"
                   ItemsSource="{Binding ItemList}">
 
+            <i:Interaction.Behaviors>
+                <behaviors:ListViewAutoScollDownBehavior/>
+            </i:Interaction.Behaviors>
+            
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding CurrentFile}"  Header="File"      Width="{Binding ActualWidth, ElementName=HelperField}"/>
