@@ -109,10 +109,7 @@ namespace FileOperator.ViewModel
                         foreach (string s in lines)
                         {
                             if (CountThisLine(s, withEmptyLines, withUsings, withOneCharaterLines))
-                                lineCount++;
-
-                            if (!string.IsNullOrWhiteSpace(s))
-                                lineCount++;
+                                lineCount++;                           
                         }
 
                         if (lineCount > 0)
