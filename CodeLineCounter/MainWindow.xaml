@@ -24,6 +24,8 @@
             <RowDefinition Height="16"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="16"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="16"/>
             <RowDefinition/>
             <RowDefinition Height="16"/>
             <RowDefinition Height="Auto"/>
@@ -57,8 +59,20 @@
             
         </Grid>
 
+        <StackPanel Grid.Row="3"
+                    Grid.Column="1">
+            
+            <CheckBox Content="Count empty lines"
+                      IsChecked="{Binding CountEmptyLines, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <CheckBox Content="Count usings"
+                      IsChecked="{Binding CountUsings, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <CheckBox Content="Count lines with only one character"
+                      IsChecked="{Binding CountLinesWithOnlyOneCharater, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            
+        </StackPanel>
+        
         <Grid Grid.Column="1"
-              Grid.Row="3">
+              Grid.Row="5">
             
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -71,7 +85,7 @@
         </Grid>
 
         <ListView Grid.Column="1"
-                  Grid.Row="3"
+                  Grid.Row="5"
                   ItemsSource="{Binding ItemList}">
 
             <ListView.View>
@@ -83,7 +97,7 @@
             
         </ListView>
 
-        <Grid Grid.Row="5"
+        <Grid Grid.Row="7"
               Grid.Column="1">
 
             <Grid.RowDefinitions>

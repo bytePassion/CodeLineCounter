@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.IO;
 using System.Threading;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
 using bytePassion.Lib.FrameworkExtensions;
@@ -51,7 +50,7 @@ namespace FileOperator.ViewModel
             new Thread(() =>
             {
                 cancel = false;   
-                HandleDirectory(new DirectoryInfo(Folder));
+                HandleDirectory(new DirectoryInfo(Folder), CountEmptyLines, CountUsings, CountLinesWithOnlyOneCharater);
 
                 Application.Current.Dispatcher.BeginInvoke(
                     DispatcherPriority.Normal,
@@ -65,8 +64,33 @@ namespace FileOperator.ViewModel
         }
 
         private bool cancel;
+        private bool countEmptyLines;
+        private bool countUsings;
+        private bool countLinesWithOnlyOneCharater;
 
-        private void HandleDirectory (DirectoryInfo directory)
+        private static bool CountThisLine(string line, bool withEmptyLines, bool withUsings, bool withOneCharaterLines)
+        {
+            var trimmedLine = line.Trim();
+
+            if (string.IsNullOrWhiteSpace(trimmedLine))
+            {
+                return withEmptyLines;
+            }
+
+            if (trimmedLine.Length == 1)
+            {
+                return withOneCharaterLines;
+            }
+
+            if (trimmedLine.StartsWith("using"))
+            {
+                return withUsings;
+            }
+
+            return true;
+        }
+
+        private void HandleDirectory (DirectoryInfo directory, bool withEmptyLines, bool withUsings, bool withOneCharaterLines)
         {
             try
             {
@@ -78,13 +102,15 @@ namespace FileOperator.ViewModel
                         !directory.FullName.Contains("\\packages") &&
                         !directory.FullName.Contains("\\Release"))
                     {
-
                         int lineCount = 0;
 
                         var lines = File.ReadAllLines(currentFile.FullName);
 
                         foreach (string s in lines)
                         {
+                            if (CountThisLine(s, withEmptyLines, withUsings, withOneCharaterLines))
+                                lineCount++;
+
                             if (!string.IsNullOrWhiteSpace(s))
                                 lineCount++;
                         }
@@ -109,7 +135,7 @@ namespace FileOperator.ViewModel
                     if (cancel)
                         return;
 
-                    HandleDirectory(currentDirectory);
+                    HandleDirectory(currentDirectory, withEmptyLines, withUsings, withOneCharaterLines);
                 }
             }
             catch (Exception except)
@@ -128,26 +154,35 @@ namespace FileOperator.ViewModel
             get { return folder; }
             set { PropertyChanged.ChangeAndNotify(this, ref folder, value); }
         }
-
         public int FileCount
         {
             get { return fileCount; }
             private set { PropertyChanged.ChangeAndNotify(this, ref fileCount, value); }
         }
-
         public int SummedLineCount
         {
             get { return summedLineCount; }
             private set { PropertyChanged.ChangeAndNotify(this, ref summedLineCount, value); }
         }
+        public bool CountEmptyLines
+        {
+            get { return countEmptyLines; }
+            set { PropertyChanged.ChangeAndNotify(this, ref countEmptyLines, value);}
+        }
+        public bool CountUsings
+        {
+            get { return countUsings; }
+            set { PropertyChanged.ChangeAndNotify(this, ref countUsings, value); }
+        }
+        public bool CountLinesWithOnlyOneCharater
+        {
+            get { return countLinesWithOnlyOneCharater; }
+            set {PropertyChanged.ChangeAndNotify(this, ref countLinesWithOnlyOneCharater, value); }
+        }
 
         public ObservableCollection<Column> ItemList { get; }
 
-        protected override void CleanUp ()
-        {
-            throw new System.NotImplementedException();
-        }
-
+        protected override void CleanUp (){ }
         public override event PropertyChangedEventHandler PropertyChanged;
     }
 }

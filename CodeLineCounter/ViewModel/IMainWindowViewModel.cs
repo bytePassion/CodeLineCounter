@@ -14,6 +14,10 @@ namespace FileOperator.ViewModel
         int FileCount       { get; }
         int SummedLineCount { get; }
 
+        bool CountEmptyLines               { get; set; }
+        bool CountUsings                   { get; set; }
+        bool CountLinesWithOnlyOneCharater { get; set; }
+
         ObservableCollection<Column> ItemList { get; }
     }
 }

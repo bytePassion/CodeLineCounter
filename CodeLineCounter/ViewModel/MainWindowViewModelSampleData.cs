@@ -14,6 +14,9 @@ namespace FileOperator.ViewModel
             Folder = @"C:\Test";
             FileCount = 234;
             SummedLineCount = 123456;
+            CountEmptyLines = true;
+            CountLinesWithOnlyOneCharater = true;
+            CountUsings = true;
 
             ItemList = new ObservableCollection<Column>
             {
@@ -30,6 +33,9 @@ namespace FileOperator.ViewModel
         public string Folder { get; set; }
         public int FileCount { get; }
         public int SummedLineCount { get; }
+        public bool CountEmptyLines { get; set; }
+        public bool CountUsings { get; set; }
+        public bool CountLinesWithOnlyOneCharater { get; set; }
 
         public ObservableCollection<Column> ItemList { get; }
 
