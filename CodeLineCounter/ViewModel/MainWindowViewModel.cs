@@ -6,14 +6,14 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
+using bytePassion.CodeLineCounter.ViewModel.Helper;
 using bytePassion.Lib.FrameworkExtensions;
 using bytePassion.Lib.WpfLib.Commands;
 using bytePassion.Lib.WpfLib.Commands.Updater;
-using FileOperator.ViewModel.Helper;
 
-namespace FileOperator.ViewModel
+namespace bytePassion.CodeLineCounter.ViewModel
 {
-    internal class MainWindowViewModel : bytePassion.Lib.WpfLib.ViewModelBase.ViewModel, IMainWindowViewModel
+    internal class MainWindowViewModel : Lib.WpfLib.ViewModelBase.ViewModel, IMainWindowViewModel
     {
         private string folder;
         private bool isOperationOngoing;

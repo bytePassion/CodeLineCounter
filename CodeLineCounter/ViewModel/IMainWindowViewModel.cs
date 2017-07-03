@@ -1,9 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
+using bytePassion.CodeLineCounter.ViewModel.Helper;
 using bytePassion.Lib.WpfLib.ViewModelBase;
-using FileOperator.ViewModel.Helper;
 
-namespace FileOperator.ViewModel
+namespace bytePassion.CodeLineCounter.ViewModel
 {
     internal interface IMainWindowViewModel : IViewModel
     {

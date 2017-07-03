@@ -1,17 +1,17 @@
-﻿<Window x:Class="FileOperator.MainWindow"
+﻿<Window x:Class="bytePassion.CodeLineCounter.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"                        
-             xmlns:sampleData="clr-namespace:FileOperator.ViewModel"
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:behaviors="clr-namespace:bytePassion.Lib.WpfLib.Behaviors;assembly=bytePassion.Lib"
+             xmlns:viewModel="clr-namespace:bytePassion.CodeLineCounter.ViewModel"
              mc:Ignorable="d"
              d:DesignWidth="900"          
         Title="CodeLineCounter" Height="459.8" Width="745">
 
     <d:DesignData.DataContext>
-        <sampleData:MainWindowViewModelSampleData/>
+        <viewModel:MainWindowViewModelSampleData/>
     </d:DesignData.DataContext>
     
     <Window.Resources>

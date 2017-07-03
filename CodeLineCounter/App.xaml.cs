@@ -1,7 +1,7 @@
 ﻿using System.Windows;
-using FileOperator.ViewModel;
+using bytePassion.CodeLineCounter.ViewModel;
 
-namespace FileOperator
+namespace bytePassion.CodeLineCounter
 {
 
     public partial class App

@@ -1,11 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
-using FileOperator.ViewModel.Helper;
+using bytePassion.CodeLineCounter.ViewModel.Helper;
 
 #pragma warning disable 0067
 
-namespace FileOperator.ViewModel
+namespace bytePassion.CodeLineCounter.ViewModel
 {
     internal class MainWindowViewModelSampleData : IMainWindowViewModel
     {

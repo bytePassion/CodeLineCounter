@@ -1,4 +1,4 @@
-﻿namespace FileOperator.ViewModel.Helper
+﻿namespace bytePassion.CodeLineCounter.ViewModel.Helper
 {
     public class Column
     {
